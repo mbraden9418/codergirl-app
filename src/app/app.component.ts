@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AwesomeFeatureService} from './awesome-feature.service';
 
 @Component({
   selector: 'cg-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codergirl-app';
+
+  constructor(svc: AwesomeFeatureService) {
+    svc.beAwesome();
+  }
 }
+
+
+
+

@@ -1,32 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input } from '@angular/core';
+import {Observable} from 'rxjs';
+import {VideoDataService} from '../.././video-data.service';
+import {Video} from '../../types';
 
-const API_URL = 'https://api.angularbootcamp.com';
-
-interface Video {
-  title: string;
-  author: string;
-  id: string;
-  viewDetails: ViewDetail[];
-}
-
-interface ViewDetail {
-  age: number;
-  region: string;
-  date: string;
-}
 @Component({
   selector: 'cg-video-list',
   templateUrl: './video-list.component.html',
   styleUrls: ['./video-list.component.css']
 })
-export class VideoListComponent {
-  selectedVideoId: string | undefined;
-  videoList = [];
 
-  constructor(http: HttpClient) {
-    http
-    .get<Video[]>(API_URL + '/videos')
-    .subscribe(videos => this.videoList = videos);
-   }
+export class VideoListComponent implements OnInit {
+  selectedVideoId: string | undefined;
+
+  @Input() videoList: Observable<Video[]>;
+
+  constructor() {
+  }
+  ngOnInit() {
+  }
+
+  pickVideo(video: any) {
+    this.selectedVideoId = video.id;
+  }
+
 }
+
+
