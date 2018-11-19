@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import {Observable} from 'rxjs';
 import {VideoDataService} from '../.././video-data.service';
 import {Video} from '../.././video-data.service';
@@ -13,12 +13,17 @@ export class VideoDashboardComponent implements OnInit {
 
 
   videos: Observable<Video[]>;
-
+  currentVideo: Video;
   constructor(svc: VideoDataService) {
     this.videos = svc.loadVideos();
   }
 
   ngOnInit() {
+  }
+
+  setSelected(video: Video) {
+    console.log('We got the video: ', video);
+    this.currentVideo = video;
   }
 
 }

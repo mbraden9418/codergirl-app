@@ -1,6 +1,6 @@
 <h1>Video Dashboard</h1>
 <div class= dashboard-div>
-  <cg-video-list [videoList] = "videos" ></cg-video-list>
-  <cg-video-player></cg-video-player>
+  <cg-video-list [videoList] = "videos | async" (chooseVideo) = "setSelected($event)"></cg-video-list>
+  <cg-video-player [video]= "currentVideo"></cg-video-player>
   <cg-stat-filters></cg-stat-filters>
 </div>
