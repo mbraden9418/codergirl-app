@@ -6,7 +6,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { StatFiltersComponent } from './stat-filters/stat-filters.component';
 import { RouterModule, Routes} from '@angular/router';
 import { VideoListItemComponent } from './video-list-item/video-list-item.component';
-
+import {ReactiveFormsModule} from '@angular/forms';
 const routes: Routes = [
   { path: '', component: VideoDashboardComponent, pathMatch: 'full' }
 ];
@@ -14,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   declarations: [VideoDashboardComponent, VideoListComponent, VideoPlayerComponent, StatFiltersComponent, VideoListItemComponent]
 })

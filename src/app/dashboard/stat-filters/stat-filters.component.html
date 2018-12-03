@@ -1,6 +1,39 @@
 <section class="statDiv">
     <div class="card-content">
       <div class="card-title">Stat Filters:</div>
+      <form  [formGroup]= "details" (ngSubmit)="saveUserDetails()" >
+      <div>
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName">
+        <div *ngIf="details.get('firstName')?.hasError('required') && details.get('firstName')?.touched">
+          Please enter first name
+        </div>
+        <div>
+          <label for="email"> Email: </label>
+          <input class="email-input" id="email" type="email" formControlName="email">
+        </div>
+        <div>
+          <label for="jobTitle">Job Title</label>
+          <input id="jobTitle" type="text" formControlName="jobTitle">
+        </div>
+        <div>
+          <label for="videoRatings"> Video Rating: </label>
+          <select id="videoRatings" formControlName="videoRatings">
+            <option *ngFor="let rating of videoRatings" [value]="rating">{{rating}}</option>
+          </select>
+        </div>
+        <button class="btn" [disabled]="!details.valid" [class.disabled]="!details.valid">Save</button>
+        <div class="card-content">
+          <div class="card-title">Form Data</div>
 
+          Form Value Object:
+          <pre>{{ details.value | json }}</pre> Form Validity:
+          <div>{{ details.valid }}</div>
+
+          <button class="btn" (click)="logForm()">Log Form Object</button>
+        </div>
+
+      </div>
+    </form>
     </div>
   </section>
